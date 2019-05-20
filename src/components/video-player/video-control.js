@@ -21,6 +21,13 @@ class VideoControl extends Component {
     })
   }
 
+  handleChangeVideo(event) {
+      this.props.changeVideo(event)
+  }
+
+  changeVolume() {
+
+  }
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
@@ -31,17 +38,17 @@ class VideoControl extends Component {
         <div className="player-control-wrapper">
             <div className="player-control">
                 <div className="control-menu">
-                    <span className="btn-box icon-plus" role="img" aria-label="">➕</span>
-                    <span role="img" aria-label="">🔊</span>
-                    <span className="btn-box icon-minus" role="img" aria-label="">➖</span>
+                    <span className="btn-box icon-plus" role="img" aria-label="" onClick={()=>this.handleChangeVideo('next')}>➕</span>
+                    <span role="img" aria-label="">📡</span>
+                    <span className="btn-box icon-minus" role="img" aria-label="" onClick={()=>this.handleChangeVideo('prev')}>➖</span>
                 </div>
                 <div>
-                    <span className="btn-box icon-plus" role="img" aria-label="">➕</span>
-                    <span role="img" aria-label="">📡</span>
-                    <span className="btn-box icon-minus" role="img" aria-label="">➖</span>
+                    <span className="btn-box icon-plus" role="img" aria-label="" onClick={()=>this.changeVolume('inc')}>➕</span>
+                    <span role="img" aria-label="">🔊</span>
+                    <span className="btn-box icon-minus" role="img" aria-label="" onClick={()=>this.changeVolume('dec')}>➖</span>
                 </div>
             </div>
-            <button type="button" className="btn-box primary-btn" onClick="toggleTVPower">on/off</button>
+            <button type="button" className="btn-box primary-btn" onClick={this.toggleTVPower}>on/off</button>
         </div>
       </div>
     );

@@ -35,13 +35,24 @@ class VideoPlayer extends Component {
   // Lifecycle
   //-----------------------------------
 
+  static getDerivedStateFromProps(nextProps, prevState) {    
+    if (prevState.videoLink !== nextProps.videoLink) {
+      let video = document.getElementById('sourcePlayer')
+      if (video) {
+        video.src = (nextProps.videoLink)
+        document.getElementById("videoPlayer").load();
+      }
+    }
+    else 
+    return null
+  }
 
   render() {
-    const {videos1, isTVOn}  = this.props
+    const { videoLink }  = this.props
     return (
       <div className="player-view">
-        <video autoPlay className="player-video-wrapper" >
-            <source src={videos1[0]} type="video/mp4"/>
+        <video autoPlay className="player-video-wrapper" id="videoPlayer">
+            <source src={videoLink} type="video/mp4" id="sourcePlayer"/>
         </video>
       </div>
     );

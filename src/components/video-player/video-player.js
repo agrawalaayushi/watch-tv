@@ -37,7 +37,7 @@ class VideoPlayer extends Component {
 
 
   render() {
-    const {videos1}  = this.props
+    const {videos1, isTVOn}  = this.props
     return (
       <div className="player-view">
         <video autoPlay className="player-video-wrapper" >
